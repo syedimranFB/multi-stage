@@ -5,15 +5,19 @@ on:
     branches: [ main ]
 
 jobs:
-        
+
   deploy-staging:
     name: Deploy to staging
+    environment:
+      name: Staging
     runs-on: ubuntu-latest
     steps:
       - run: echo Deploy to staging using ${{ secrets.mysecret-stag }}
         
   deploy-production:
     name: Deploy to production
+    environment:
+      name: Production
     needs: [deploy-staging]
     runs-on: ubuntu-latest
     steps:
